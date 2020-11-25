@@ -15,7 +15,7 @@
 <form action="/login.do" method="post">
 <p>请输入身份证号：<input type="text" name="carId"></p>
 <p>请输入密码：<input type="password" name="password"></p>
-<p><input type="submit" value="登录">  <a href="#">注册</a></p>
+<p><input type="submit" value="登录">  <a href="register.jsp">注册</a></p>
 </form>
 </body>
 </html>

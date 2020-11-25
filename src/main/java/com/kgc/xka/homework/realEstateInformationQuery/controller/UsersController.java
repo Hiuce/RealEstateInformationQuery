@@ -38,5 +38,34 @@ public class UsersController {
             return "login";
         }
     }
+    @RequestMapping("/register.do")
+    public String register() {
+        return "register";
+    }
+
+    @RequestMapping("/doregister.do")
+    public String doregister(String cardid, String name, String password, PrintWriter out) {
+        Users users = new Users();
+        users.setCarid(cardid);
+        users.setName(name);
+        users.setPassword(password);
+        users.setStatus(1);
+        String gend = cardid.substring(17);
+        if (gend != null) {
+            int gender = Integer.parseInt(gend);
+            if (gender % 2 == 0) {
+                users.setGender(0);
+            } else {
+                users.setGender(1);
+            }
+        }
+        if (usersService.addUser(users) > 0) {
+
+            out.print("<script>var flag=confirm('注册成功，现在去登录吗');if(flag){location.href='login.do'}else{location.href='register.do'}</script>");
+        } else {
+            out.print("<script>alert('注册失败，请重新注册');location.href='login.do'</script>");
+        }
+        return "login";
+    }
 
 }
