@@ -24,4 +24,10 @@ public class UsersServiceImpl implements UsersService {
             return null;
         }
     }
+
+    @Override
+    public int addUser(Users users) {
+        int i=usersMapper.insertSelective(users);
+        return i;
+    }
 }
